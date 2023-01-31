@@ -1,0 +1,15 @@
+@font-face {
+  font-family: Paintball;
+  font-weight: bold;
+  src: url(paintball.woff);
+}
+
+@font-face {
+  font-family: Ikamodoki;
+  font-weight: bold;
+  src: url(ikamodoki.woff);
+}
+
+* {
+  font-family: Paintball, Ikamodoki, sans-serif;
+}
