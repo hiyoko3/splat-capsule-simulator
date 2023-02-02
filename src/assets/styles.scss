@@ -6,15 +6,75 @@
 
 @font-face {
   font-family: Ikamodoki;
-  font-weight: bold;
   src: url(ikamodoki.woff);
 }
 
+@font-face {
+  font-family: PottaOne;
+  src: url(PottaOne-Regular.woff);
+}
+
 * {
-  font-family: Paintball, Ikamodoki, sans-serif;
+  font-family: Paintball, Ikamodoki, PottaOne, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   background: #333;
   color: #eee;
+  padding: 24px;
+}
+
+main {
+  margin: 16px auto;
+}
+
+hr {
+  margin: 8px auto;
+}
+
+button {
+  padding: 16px;
+  width: 100px;
+}
+
+.panel {
+  background: #111;
+  color: #ddd;
+  padding: 8px;
+  margin: 16px auto;
+}
+
+.flex {
+  display: flex;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.card {
+  padding: 16px;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  width: 120px;
+  margin: 16px;
 }

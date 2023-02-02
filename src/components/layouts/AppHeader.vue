@@ -1,6 +1,7 @@
 <template>
   <header>
-    <h1>Splat Capsule Simulator</h1>
+    <h1>スプラトゥーン3 ガチャシミュレーター</h1>
+    <hr />
   </header>
 </template>
 

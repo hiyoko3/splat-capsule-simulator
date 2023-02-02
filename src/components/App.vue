@@ -1,19 +1,20 @@
 <template>
-  <div>
-    <app-header></app-header>
+  <app-header></app-header>
 
+  <main>
+    <p class="panel">スプラトゥーン3 のガチャシミュレーターです</p>
+    <img :src="CapsuleSystemImg" width="150" height="130" />
+    <button @click="startCapsuleSystem">ガチャを引く</button>
     <div>
-      <p>test</p>
-      <p>テスト</p>
-      <img :src="CapsuleSystemImg" width="50" height="30" />
-      <button @click="startCapsuleSystem">ガチャ</button>
-      <div>
-        <p>結果</p>
-        <p v-for="(result, idx) in resultList" :key="`result-${idx}`">{{ result }}</p>
+      <p>結果</p>
+      <div class="flex wrap">
+        <div v-for="(result, idx) in resultList" :key="`result-${idx}`" class="card">
+          <p>{{ result.group }}</p>
+        </div>
       </div>
     </div>
-    <app-footer></app-footer>
-  </div>
+  </main>
+  <app-footer></app-footer>
 </template>
 
 <script lang="ts">
@@ -31,7 +32,7 @@ export default defineComponent({
   },
   setup() {
     const capsuleSystem: CapsuleSystem = new CapsuleSystem();
-    let resultList: Ref<unknown[]> = ref([]);
+    let resultList: Ref<CapsuleItem[]> = ref([]);
 
     const startCapsuleSystem = async (): Promise<void> => {
       const capsuleItem: CapsuleItem = await capsuleSystem.print();

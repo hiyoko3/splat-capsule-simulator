@@ -4,6 +4,9 @@ export type CapsuleItem = {
   probability: number;
 };
 
+export type Season = 'chilli' | 'drizzle';
+
 export type SeasonCapsule = {
+  chilli: CapsuleItem[];
   drizzle: CapsuleItem[];
 };

@@ -1,10 +1,11 @@
 import SplatCapsuleContents from '@src/assets/SplatCapsuleContents.json';
-import { CapsuleItem, SeasonCapsule } from '@src/models/CapsuleModel';
+import { CapsuleItem, Season, SeasonCapsule } from '@src/models/CapsuleModel';
 
 export class CapsuleSystem {
   private static singleton: CapsuleSystem = new CapsuleSystem();
   private capsuleContents: SeasonCapsule;
   private seasonItems: CapsuleItem[];
+  private selectedSeason: Season = 'drizzle';
 
   static getInstance(): CapsuleSystem {
     if (CapsuleSystem.singleton == null) {
@@ -16,7 +17,7 @@ export class CapsuleSystem {
 
   constructor() {
     this.capsuleContents = SplatCapsuleContents as SeasonCapsule;
-    this.seasonItems = this.capsuleContents['drizzle'];
+    this.seasonItems = this.capsuleContents[this.selectedSeason];
   }
 
   async print(): Promise<CapsuleItem> {
@@ -24,13 +25,11 @@ export class CapsuleSystem {
     let accumulateValue: number = 0.0;
     const randVal: number = (Math.floor(Math.random() * 1000) + 1) / 1000;
 
-    // seasonItems は昇順であることが必須
     console.log('accumulateValue', accumulateValue, 'randVal', randVal);
     for (const capsuleItem of this.seasonItems) {
       accumulateValue += capsuleItem.probability;
       // 乱数が加算値以下ならアイテムを返却
       if (randVal < accumulateValue) {
-        console.log('result', capsuleItem);
         return capsuleItem;
       }
     }

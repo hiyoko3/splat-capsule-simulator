@@ -1,4 +1,5 @@
 {
+  "chilli": [],
   "drizzle": [
     {
       "group": "プレート",
@@ -11,9 +12,29 @@
       "probability": 0.003
     },
     {
+      "group": "ギアパワーのかけら",
+      "name": "ギアパワーのかけら * 10",
+      "probability": 0.006
+    },
+    {
       "group": "フードチケット",
       "name": "おカネ/ケイケンチ味方全員が2倍",
       "probability": 0.03
+    },
+    {
+      "group": "カードパック",
+      "name": "ナワバトラー",
+      "probability": 0.04
+    },
+    {
+      "group": "プレート",
+      "name": "プレート",
+      "probability": 0.06
+    },
+    {
+      "group": "フードチケット",
+      "name": "おカネ/ケイケンチが2倍",
+      "probability": 0.07
     },
     {
       "group": "ギアパワーのかけら",
