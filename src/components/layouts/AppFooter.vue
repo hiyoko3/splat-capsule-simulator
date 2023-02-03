@@ -1,10 +1,14 @@
 <template>
-  <footer class="text-center">
+  <footer>
     <hr />
-    <div class="flex justify-center align-center">
-      <p>利用規約</p>
+    <div class="">
+      <p>このサイトは非公式(unofficial)サービスです。任天堂株式会社とは一切関係ありません</p>
+      <p>
+        <a href="https://github.com/hiyoko3/splat-capsule-simulator" target="_blank">このサイトのソースコード</a>
+        はオープンソース(MIT License)で公開されています
+      </p>
     </div>
-    <div><strong>&copy; hiyoko3</strong></div>
+    <div class="text-center"><strong>&copy; hiyoko3</strong></div>
   </footer>
 </template>
 
