@@ -69,68 +69,68 @@
   "drizzle": [
     {
       "groupId": 1,
-      "itemIds_1": [],
+      "itemIds_1": [1],
       "itemIds_2": []
     },
     {
       "groupId": 2,
-      "itemIds_1": [],
-      "itemIds_2": []
+      "itemIds_1": [2],
+      "itemIds_2": [3]
     },
     {
       "groupId": 3,
-      "itemIds_1": [],
+      "itemIds_1": [4],
       "itemIds_2": []
     },
     {
       "groupId": 4,
-      "itemIds_1": [],
+      "itemIds_1": [5, 6],
       "itemIds_2": []
     },
     {
       "groupId": 5,
-      "itemIds_1": [],
+      "itemIds_1": [7],
       "itemIds_2": []
     },
     {
       "groupId": 6,
-      "itemIds_1": [],
+      "itemIds_1": [8],
       "itemIds_2": []
     },
     {
       "groupId": 7,
-      "itemIds_1": [],
+      "itemIds_1": [9, 10],
       "itemIds_2": []
     },
     {
       "groupId": 8,
-      "itemIds_1": [],
+      "itemIds_1": [11],
       "itemIds_2": []
     },
     {
       "groupId": 9,
-      "itemIds_1": [],
+      "itemIds_1": [25],
       "itemIds_2": []
     },
     {
       "groupId": 10,
-      "itemIds_1": [],
+      "itemIds_1": [26],
       "itemIds_2": []
     },
     {
       "groupId": 11,
-      "itemIds_1": [],
+      "itemIds_1": [27, 28],
       "itemIds_2": []
     },
     {
       "groupId": 12,
-      "itemIds_1": [],
+      "itemIds_1": [29],
       "itemIds_2": []
     },
     {
       "groupId": 13,
-      "itemIds_1": [],
-      "itemIds_2": []
+      "itemIds_1": [1000],
+      "itemIds_2": [2000]
     }
   ]
 }
