@@ -1,0 +1,113 @@
+{
+  "chilli": [],
+  "drizzle": [
+    {
+      "itemId": 1,
+      "name": "金プレート",
+      "cssStyle": "gold-plate",
+      "imgSrc": ""
+    },
+    {
+      "itemId": 2,
+      "name": "大大吉の",
+      "cssStyle": "plate-label",
+      "imgSrc": ""
+    },
+    {
+      "itemId": 3,
+      "name": "ラッキーマン",
+      "cssStyle": "plate-label",
+      "imgSrc": ""
+    },
+    {
+      "itemId": 4,
+      "name": "ギアパワーのかけら全種×10",
+      "cssStyle": "gear-power-10",
+      "imgSrc": ""
+    },
+    {
+      "itemId": 5,
+      "name": "味方全員のおカネが2倍",
+      "cssStyle": "food-ticket",
+      "imgSrc": ""
+    },
+    {
+      "itemId": 6,
+      "name": "味方全員のケイケンチが2倍",
+      "cssStyle": "food-ticket",
+      "imgSrc": ""
+    },
+    {
+      "itemId": 7,
+      "name": "ナワバトラー",
+      "cssStyle": "nawabattler",
+      "imgSrc": ""
+    },
+    {
+      "itemId": 8,
+      "name": "プレート",
+      "cssStyle": "normal-plate",
+      "imgSrc": ""
+    },
+    {
+      "itemId": 9,
+      "name": "おカネが2倍",
+      "cssStyle": "food-ticket",
+      "imgSrc": ""
+    },
+    {
+      "itemId": 10,
+      "name": "ケイケンチが2倍",
+      "cssStyle": "food-ticket",
+      "imgSrc": ""
+    },
+    {
+      "itemId": 11,
+      "name": "ギアパワー",
+      "cssStyle": "gear-power",
+      "imgSrc": ""
+    },
+    {
+      "itemId": 25,
+      "name": "ロッカーステッカー",
+      "cssStyle": "locker-sticker",
+      "imgSrc": ""
+    },
+    {
+      "itemId": 26,
+      "name": "ロッカーアイテム",
+      "cssStyle": "locker-item",
+      "imgSrc": ""
+    },
+    {
+      "itemId": 27,
+      "name": "おカネが1.5倍",
+      "cssStyle": "food-ticket",
+      "imgSrc": ""
+    },
+    {
+      "itemId": 28,
+      "name": "ケイケンチが1.5倍",
+      "cssStyle": "food-ticket",
+      "imgSrc": ""
+    },
+    {
+      "itemId": 29,
+      "name": "ドリンクチケット",
+      "cssStyle": "drink-ticket",
+      "imgSrc": ""
+    },
+    {
+      "itemId": 1000,
+      "name": "愛にあふれた",
+      "cssStyle": "plate-label",
+      "imgSrc": ""
+    },
+    {
+      "itemId": 2000,
+      "name": "1号",
+      "cssStyle": "plate-label",
+      "imgSrc": ""
+    }
+  ]
+}
