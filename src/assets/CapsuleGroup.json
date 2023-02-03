@@ -4,79 +4,79 @@
       "id": 1,
       "name": "期間限定プレート",
       "weight": 0.001,
-      "imgSrc": ""
+      "imgSrc": "/assets/gold.svg"
     },
     {
       "id": 2,
       "name": "期間限定二つ名",
       "weight": 0.003,
-      "imgSrc": ""
+      "imgSrc": "/assets/silver.svg"
     },
     {
       "id": 3,
       "name": "ギアパワーのかけら * 10",
       "weight": 0.006,
-      "imgSrc": ""
+      "imgSrc": "/assets/bronze.svg"
     },
     {
       "id": 4,
       "name": "味方全員2倍フードチケット",
       "weight": 0.03,
-      "imgSrc": ""
+      "imgSrc": "/assets/pink.svg"
     },
     {
       "id": 5,
       "name": "カードパック",
       "weight": 0.04,
-      "imgSrc": ""
+      "imgSrc": "/assets/violet.svg"
     },
     {
       "id": 6,
       "name": "プレート",
       "weight": 0.06,
-      "imgSrc": ""
+      "imgSrc": "/assets/blue.svg"
     },
     {
       "id": 7,
       "name": "2倍フードチケット",
       "weight": 0.07,
-      "imgSrc": ""
+      "imgSrc": "/assets/pink.svg"
     },
     {
       "id": 8,
       "name": "ギアパワーのかけら",
       "weight": 0.1,
-      "imgSrc": ""
+      "imgSrc": "/assets/violet.svg"
     },
     {
       "id": 9,
       "name": "ステッカー",
       "weight": 0.1,
-      "imgSrc": ""
+      "imgSrc": "/assets/blue.svg"
     },
     {
       "id": 10,
       "name": "ロッカーフィギュア",
       "weight": 0.1,
-      "imgSrc": ""
+      "imgSrc": "/assets/pink.svg"
     },
     {
       "id": 11,
       "name": "味方全員1.5倍フードチケット",
       "weight": 0.13,
-      "imgSrc": ""
+      "imgSrc": "/assets/violet.svg"
     },
     {
       "id": 12,
       "name": "ドリンクチケット",
       "weight": 0.14,
-      "imgSrc": ""
+      "imgSrc": "/assets/blue.svg"
     },
     {
       "id": 13,
       "name": "二つ名",
       "weight": 0.22,
-      "imgSrc": ""
+      "imgSrc": "/assets/violet.svg"
     }
   ],
   "drizzle": [
@@ -84,79 +84,79 @@
       "id": 1,
       "name": "期間限定プレート",
       "weight": 0.001,
-      "imgSrc": ""
+      "imgSrc": "/assets/gold.svg"
     },
     {
       "id": 2,
       "name": "期間限定二つ名",
       "weight": 0.003,
-      "imgSrc": ""
+      "imgSrc": "/assets/silver.svg"
     },
     {
       "id": 3,
       "name": "ギアパワーのかけら * 10",
       "weight": 0.006,
-      "imgSrc": ""
+      "imgSrc": "/assets/bronze.svg"
     },
     {
       "id": 4,
       "name": "味方全員2倍フードチケット",
       "weight": 0.03,
-      "imgSrc": ""
+      "imgSrc": "/assets/pink.svg"
     },
     {
       "id": 5,
       "name": "カードパック",
       "weight": 0.04,
-      "imgSrc": ""
+      "imgSrc": "/assets/violet.svg"
     },
     {
       "id": 6,
       "name": "プレート",
       "weight": 0.06,
-      "imgSrc": ""
+      "imgSrc": "/assets/blue.svg"
     },
     {
       "id": 7,
       "name": "2倍フードチケット",
       "weight": 0.07,
-      "imgSrc": ""
+      "imgSrc": "/assets/pink.svg"
     },
     {
       "id": 8,
       "name": "ギアパワーのかけら",
       "weight": 0.1,
-      "imgSrc": ""
+      "imgSrc": "/assets/violet.svg"
     },
     {
       "id": 9,
       "name": "ステッカー",
       "weight": 0.1,
-      "imgSrc": ""
+      "imgSrc": "/assets/blue.svg"
     },
     {
       "id": 10,
       "name": "ロッカーフィギュア",
       "weight": 0.1,
-      "imgSrc": ""
+      "imgSrc": "/assets/pink.svg"
     },
     {
       "id": 11,
       "name": "味方全員1.5倍フードチケット",
       "weight": 0.13,
-      "imgSrc": ""
+      "imgSrc": "/assets/violet.svg"
     },
     {
       "id": 12,
       "name": "ドリンクチケット",
       "weight": 0.14,
-      "imgSrc": ""
+      "imgSrc": "/assets/blue.svg"
     },
     {
       "id": 13,
       "name": "二つ名",
       "weight": 0.22,
-      "imgSrc": ""
+      "imgSrc": "/assets/violet.svg"
     }
   ]
 }

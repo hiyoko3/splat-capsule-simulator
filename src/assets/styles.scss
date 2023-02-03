@@ -22,7 +22,7 @@
 }
 
 body {
-  background: #333;
+  background: #444;
   color: #eee;
   padding: 24px;
 }
@@ -71,10 +71,71 @@ button {
   flex-wrap: wrap;
 }
 
-.card {
+.capsule-item {
   padding: 16px;
   border: 1px solid #fff;
   border-radius: 8px;
   width: 120px;
   margin: 16px;
+}
+
+.overlay {
+  z-index: 10000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  z-index: 10001;
+  width: 50%;
+  padding: 1em;
+  background: #111;
+  text-align: center;
+  border-radius: 8px;
+
+  .modal-content {
+    margin: 16px auto;
+  }
+}
+
+.popup {
+  animation: modal-popup 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1 forwards;
+}
+
+.popout {
+  animation: modal-popout 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1 forwards;
+}
+
+@keyframes modal-popup {
+  0% {
+    transform: translateY(40px) scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  80%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-popout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(40px) scale(0.8);
+  }
+  80%,
+  100% {
+    opacity: 0;
+  }
 }

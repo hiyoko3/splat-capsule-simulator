@@ -1,7 +1,7 @@
 import SeasonCapsuleGroup from '@src/assets/CapsuleGroup.json';
 import SeasonCapsuleGroupItem from '@src/assets/CapsuleGroupItem.json';
 import SeasonCapsuleItem from '@src/assets/CapsuleItem.json';
-import { CapsuleGroup, CapsuleItem, Season, SeasonCapsule } from '@src/models/CapsuleModel';
+import { CapsuleGroup, CapsuleItem, CapsuleItems, Season, SeasonCapsule } from '@src/models/CapsuleModel';
 import { CapsuleGroupItem } from './../models/CapsuleModel';
 
 export class CapsuleSystem {
@@ -88,42 +88,45 @@ export class CapsuleSystem {
    * Extract a capsule item
    * @param group CapsuleGroup
    */
-  async extractItem(group: CapsuleGroup): Promise<CapsuleItem[]> {
+  async extractItem(group: CapsuleGroup): Promise<CapsuleItems> {
     const groupItem: CapsuleGroupItem | undefined = this.capsuleGroupItems.find(
       (groupItem: CapsuleGroupItem) => groupItem.groupId === group.id
     );
 
-    console.log('groupItem', groupItem);
     if (groupItem === undefined) {
       throw new Error('Not found capsule group item');
     }
 
     const randVal: number = this.generateRandValue(0, groupItem.itemIds_1.length);
     const item1Id: number = groupItem.itemIds_1[randVal];
-    console.log('randVal', randVal, 'item1Id', item1Id);
 
     const item1: CapsuleItem | undefined = this.capsuleItems.find(
-      (capsuleItem: CapsuleItem) => capsuleItem.itemId === item1Id
+      (capsuleItem: CapsuleItem) => capsuleItem.id === item1Id
     );
 
     if (item1 === undefined) {
       throw new Error('Not found capsule item');
     }
 
-    const result: CapsuleItem[] = [item1];
+    const result: CapsuleItems = {
+      isTitleItem: false,
+      item1: item1,
+      item2: null
+    };
 
     if (group.id === this.plateLabelGroupId) {
       const randVal: number = this.generateRandValue(0, groupItem.itemIds_2.length);
       const item2Id: number = groupItem.itemIds_2[randVal];
 
       const item2: CapsuleItem | undefined = this.capsuleItems.find(
-        (capsuleItem: CapsuleItem) => capsuleItem.itemId === item2Id
+        (capsuleItem: CapsuleItem) => capsuleItem.id === item2Id
       );
 
       if (item2 === undefined) {
         throw new Error('Not found capsule item');
       }
-      result.push(item2);
+      result.isTitleItem = true;
+      result.item2 = item2;
     }
     return result;
   }

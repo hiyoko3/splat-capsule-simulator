@@ -11,8 +11,14 @@ export type CapsuleGroupItem = {
   itemIds_2: number[];
 };
 
+export type CapsuleItems = {
+  isTitleItem: boolean;
+  item1: CapsuleItem;
+  item2: CapsuleItem | null;
+};
+
 export type CapsuleItem = {
-  itemId: number;
+  id: number;
   name: string;
   cssStyle: string;
   imgSrc: string;
