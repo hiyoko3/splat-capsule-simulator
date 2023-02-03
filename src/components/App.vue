@@ -10,26 +10,32 @@
 
     <img :src="CapsuleSystemImg" width="150" height="130" />
     <button @click="startCapsuleSystem">ガチャを引く</button>
-    <div>
-      <p>結果</p>
-      <div class="flex wrap">
-        <div v-for="(capsuleItem, idx) in capsuleItemList" :key="`capsuleItem-${idx}`" class="capsule-item">
-          <p>{{ capsuleItem.item1.name }}</p>
-        </div>
+    <p>結果</p>
+    <div
+      v-for="(capsuleItem, idx) in capsuleItemList"
+      :key="`capsuleItem-${idx}`"
+      class="capsule-item text-center flex align-center"
+    >
+      <div class="mr-16">
+        <img :src="capsuleItem.item1.imgSrc" width="40" height="40" alt="no-image" />
       </div>
+      <span class="capsule-group-label">{{ capsuleItem.group.name }}</span>
+      <p>{{ capsuleItem.item1.name }}</p>
+      <p v-if="capsuleItem.item2">&nbsp;/&nbsp;{{ capsuleItem.item2.name }}</p>
     </div>
 
     <div v-if="groupModal || itemModal" class="overlay">
       <div v-if="groupModal" :class="`modal ${modalCssStyle}`">
         <div class="modal-content">
-          <img :src="group.imgSrc" width="150" height="130" />
+          <img :src="group.imgSrc" width="150" height="150" />
         </div>
       </div>
 
       <div v-if="itemModal" :class="`modal ${modalCssStyle}`">
         <div class="modal-content">
-          <img :src="item.item1.imgSrc" width="150" height="130" />
+          <img :src="item.item1.imgSrc" width="80" height="80" alt="no-item-image" />
           <p>{{ item.item1.name }}</p>
+          <p v-if="item.item2">&nbsp;/&nbsp;{{ item.item2.name }}</p>
         </div>
       </div>
     </div>
@@ -65,7 +71,7 @@ export default defineComponent({
       imgSrc: ''
     });
     const item: Ref<CapsuleItems> = ref({
-      isTitleItem: false,
+      group: group.value,
       item1: {
         id: 0,
         name: '',
@@ -76,6 +82,8 @@ export default defineComponent({
     });
     const capsuleItemList: Ref<CapsuleItems[]> = ref([]);
 
+    // local variable
+    const timerSec = 500;
     const startCapsuleSystem = async (): Promise<void> => {
       // extract group
       groupModal.value = true;
@@ -85,22 +93,22 @@ export default defineComponent({
 
       setTimeout(() => {
         modalCssStyle.value = 'popout';
-      }, 1500);
+      }, timerSec);
 
       setTimeout(() => {
         groupModal.value = false;
+
         itemModal.value = true;
         modalCssStyle.value = 'popup';
         setTimeout(() => {
           modalCssStyle.value = 'popout';
-        }, 1500);
+        }, timerSec);
 
         setTimeout(() => {
           itemModal.value = false;
-        }, 2000);
-      }, 2000);
+        }, timerSec + 500);
+      }, timerSec + 500);
 
-      console.log(group.value, item.value);
       capsuleItemList.value.push(item.value);
     };
 

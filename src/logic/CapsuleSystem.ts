@@ -30,6 +30,8 @@ export class CapsuleSystem {
   private capsuleItems: CapsuleItem[];
   // 二つ名 groupId
   private plateLabelGroupId: number = 13;
+  // ロッカーアイテム groupId
+  private lockerIds: number[] = [9, 10];
 
   /**
    * create instance
@@ -94,10 +96,10 @@ export class CapsuleSystem {
     );
 
     if (groupItem === undefined) {
-      throw new Error('Not found capsule group item');
+      throw new Error(`Not found capsule group item, group: ${group}`);
     }
 
-    const randVal: number = this.generateRandValue(0, groupItem.itemIds_1.length);
+    const randVal: number = this.generateRandValue(0, groupItem.itemIds_1.length - 1);
     const item1Id: number = groupItem.itemIds_1[randVal];
 
     const item1: CapsuleItem | undefined = this.capsuleItems.find(
@@ -105,11 +107,11 @@ export class CapsuleSystem {
     );
 
     if (item1 === undefined) {
-      throw new Error('Not found capsule item');
+      throw new Error(`Not found capsule item1, groupItemId: ${groupItem.groupId}, item1Id: ${item1Id}`);
     }
 
     const result: CapsuleItems = {
-      isTitleItem: false,
+      group: group,
       item1: item1,
       item2: null
     };
@@ -123,9 +125,22 @@ export class CapsuleSystem {
       );
 
       if (item2 === undefined) {
-        throw new Error('Not found capsule item');
+        throw new Error(`Not found capsule item2, groupItem: ${groupItem}, item2Id: ${item2Id}`);
       }
-      result.isTitleItem = true;
+      result.item2 = item2;
+    } else if (this.lockerIds.includes(group.id)) {
+      // remove item1Id
+      const index: number = groupItem.itemIds_2.indexOf(item1Id);
+      groupItem.itemIds_2.splice(index, 1);
+      const item2Id: number = groupItem.itemIds_2[randVal];
+
+      const item2: CapsuleItem | undefined = this.capsuleItems.find(
+        (capsuleItem: CapsuleItem) => capsuleItem.id === item2Id
+      );
+
+      if (item2 === undefined) {
+        throw new Error(`Not found capsule item2, groupItem: ${groupItem}, item2Id: ${item2Id}`);
+      }
       result.item2 = item2;
     }
     return result;

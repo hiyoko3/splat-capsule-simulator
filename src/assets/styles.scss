@@ -47,6 +47,34 @@ button {
   margin: 16px auto;
 }
 
+.text-center {
+  text-align: center;
+}
+
+.pw-8 {
+  padding: auto 8px;
+}
+
+.pw-16 {
+  padding: auto 16px;
+}
+
+.mw-8 {
+  margin: auto 8px;
+}
+
+.mw-16 {
+  margin: auto 16px;
+}
+
+.mr-8 {
+  margin-right: 8px;
+}
+
+.mr-16 {
+  margin-right: 16px;
+}
+
 .flex {
   display: flex;
 }
@@ -67,20 +95,25 @@ button {
   justify-content: space-around;
 }
 
-.text-center {
-  text-align: center;
-}
-
 .wrap {
   flex-wrap: wrap;
 }
 
+.capsule-group-label {
+  padding: 4px 8px;
+  background: #222;
+  margin-right: 8px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
 .capsule-item {
-  padding: 16px;
+  padding: 8px;
   border: 1px solid #fff;
   border-radius: 8px;
-  width: 120px;
-  margin: 16px;
+  width: 100%;
+  margin: 8px;
+  font-size: 14px;
 }
 
 .overlay {

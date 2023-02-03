@@ -12,7 +12,7 @@ export type CapsuleGroupItem = {
 };
 
 export type CapsuleItems = {
-  isTitleItem: boolean;
+  group: CapsuleGroup;
   item1: CapsuleItem;
   item2: CapsuleItem | null;
 };
