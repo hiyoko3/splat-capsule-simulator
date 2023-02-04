@@ -17,7 +17,7 @@
       class="capsule-item text-center flex align-center"
     >
       <div class="mr-16">
-        <img :src="capsuleItem.item1.imgSrc" width="40" height="40" alt="no-image" />
+        <img :src="capsuleItem.item1.imgSrc" height="40" alt="no-image" />
       </div>
       <span class="capsule-group-label">{{ capsuleItem.group.name }}</span>
       <p>{{ capsuleItem.item1.name }}</p>
@@ -33,7 +33,7 @@
 
       <div v-if="itemModal" :class="`modal ${modalCssStyle}`">
         <div class="modal-content">
-          <img :src="item.item1.imgSrc" width="80" height="80" alt="no-item-image" />
+          <img :src="item.item1.imgSrc" height="80" alt="no-item-image" />
           <p>{{ item.item1.name }}</p>
           <p v-if="item.item2">&nbsp;/&nbsp;{{ item.item2.name }}</p>
         </div>

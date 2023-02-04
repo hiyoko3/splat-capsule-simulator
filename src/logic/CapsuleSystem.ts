@@ -23,7 +23,7 @@ export class CapsuleSystem {
   //
   private allSeason: Season[] = ['chilli', 'drizzle'];
   // A season is selected by user.
-  private selectedSeason: Season = 'drizzle';
+  private selectedSeason: Season = 'chilli';
   // season item
   private capsuleGroups: CapsuleGroup[];
   private capsuleGroupItems: CapsuleGroupItem[];
