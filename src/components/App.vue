@@ -1,22 +1,28 @@
 <template>
-  <app-header></app-header>
-
   <main>
-    <div class="panel">スプラトゥーン3 のガチャシミュレーターです</div>
+    <app-header></app-header>
+    <div class="panel flex align-center">
+      <img :src="SquidImg" height="30" class="mr-8" />
+      スプラトゥーン3 のガチャシミュレーターです
+      <img :src="OctpusImg" height="30" class="ml-8" />
+    </div>
 
     <div class="flex justify-start align-center my-16 form">
-      <select class="form-select mr-8" @change="changeSeason">
-        <option
-          v-for="(season, idx) in seasonList"
-          :key="`season-${idx}`"
-          :value="season"
-          :selected="season === selectedSeason"
-        >
-          {{ season }}
-        </option>
-      </select>
+      <div class="form-select mr-16">
+        <label for="capsule-season">シーズン</label>
+        <select id="capsule-season" @change="changeSeason">
+          <option
+            v-for="(season, idx) in seasonList"
+            :key="`season-${idx}`"
+            :value="season"
+            :selected="season === selectedSeason"
+          >
+            {{ season }}
+          </option>
+        </select>
+      </div>
 
-      <div class="form-checkbox mw-8">
+      <div class="form-checkbox ml-16">
         <input id="modal-state" type="checkbox" :checked="isModalState" @change="changeModalState" />
         <label for="modal-state">ガチャ演出</label>
       </div>
@@ -66,6 +72,8 @@
 
 <script lang="ts">
 import CapsuleSystemImg from '@src/assets/capsule-system.svg';
+import OctpusImg from '@src/assets/octpus.svg';
+import SquidImg from '@src/assets/squid.svg';
 import AppFooter from '@src/components/layouts/AppFooter.vue';
 import AppHeader from '@src/components/layouts/AppHeader.vue';
 import { CapsuleSystem } from '@src/logic/CapsuleSystem';
@@ -173,7 +181,9 @@ export default defineComponent({
       changeSeason,
       changeModalState,
       // assets
-      CapsuleSystemImg
+      CapsuleSystemImg,
+      SquidImg,
+      OctpusImg
     };
   }
 });

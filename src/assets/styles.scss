@@ -26,14 +26,26 @@ $default-white: #eee;
 
 $strong-black: #222;
 $strong-white: #ddd;
+
 body {
   background: $default-black;
   color: $default-white;
-  padding: 24px;
+  height: 100vh;
 }
 
-main {
-  margin: 16px auto;
+#app {
+  min-height: 100%;
+  padding: 24px;
+
+  header {
+    width: 100%;
+  }
+
+  footer {
+    position: sticky;
+    top: 100vh;
+    width: 100%;
+  }
 }
 
 hr {
@@ -166,16 +178,24 @@ hr {
 
 .form {
   .form-select {
-    padding: 8px;
-    width: 120px;
+    display: flex;
+    align-items: center;
 
     select {
       background: $strong-black;
       color: $strong-white;
+      padding: 8px;
+      width: 120px;
+    }
+    label {
+      padding-right: 16px;
     }
   }
 
   .form-checkbox {
+    display: flex;
+    align-items: center;
+
     input[type='checkbox'] {
       transform: scale(2);
     }
