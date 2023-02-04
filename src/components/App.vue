@@ -2,40 +2,61 @@
   <app-header></app-header>
 
   <main>
-    <p class="panel">スプラトゥーン3 のガチャシミュレーターです</p>
+    <div class="panel">スプラトゥーン3 のガチャシミュレーターです</div>
 
-    <select @change="changeSeason">
-      <option v-for="(season, idx) in seasonList" :key="`season-${idx}`" :value="season">{{ season }}</option>
-    </select>
+    <div class="flex justify-start align-center my-16 form">
+      <select class="form-select mr-8" @change="changeSeason">
+        <option
+          v-for="(season, idx) in seasonList"
+          :key="`season-${idx}`"
+          :value="season"
+          :selected="season === selectedSeason"
+        >
+          {{ season }}
+        </option>
+      </select>
 
-    <img :src="CapsuleSystemImg" width="150" height="130" />
-    <button @click="startCapsuleSystem">ガチャを引く</button>
-    <p>結果</p>
+      <div class="form-checkbox mw-8">
+        <input id="modal-state" type="checkbox" :checked="isModalState" @change="changeModalState" />
+        <label for="modal-state">ガチャ演出</label>
+      </div>
+    </div>
+
+    <div class="capsule-system flex justify-center align-center my-8">
+      <img :src="CapsuleSystemImg" />
+      <button class="mw-16" @click="startCapsuleSystem">ガチャを引く</button>
+    </div>
+
+    <h3>結果</h3>
     <div
       v-for="(capsuleItem, idx) in capsuleItemList"
       :key="`capsuleItem-${idx}`"
-      class="capsule-item text-center flex align-center"
+      class="capsule-item text-center flex justify-start align-center"
     >
-      <div class="mr-16">
-        <img :src="capsuleItem.item1.imgSrc" height="40" alt="no-image" />
+      <div class="mw-16 text-center">
+        <img :src="capsuleItem.item1.imgSrc" alt="no-image" />
       </div>
       <span class="capsule-group-label">{{ capsuleItem.group.name }}</span>
-      <p>{{ capsuleItem.item1.name }}</p>
-      <p v-if="capsuleItem.item2">&nbsp;/&nbsp;{{ capsuleItem.item2.name }}</p>
+      <p>
+        {{ capsuleItem.item1.name }}
+        <span v-if="capsuleItem.item2">/&nbsp;{{ capsuleItem.item2.name }}</span>
+      </p>
     </div>
 
     <div v-if="groupModal || itemModal" class="overlay">
       <div v-if="groupModal" :class="`modal ${modalCssStyle}`">
         <div class="modal-content">
-          <img :src="group.imgSrc" width="150" height="150" />
+          <img :src="group.imgSrc" class="capsule-img" />
         </div>
       </div>
 
       <div v-if="itemModal" :class="`modal ${modalCssStyle}`">
         <div class="modal-content">
-          <img :src="item.item1.imgSrc" height="80" alt="no-item-image" />
-          <p>{{ item.item1.name }}</p>
-          <p v-if="item.item2">&nbsp;/&nbsp;{{ item.item2.name }}</p>
+          <img :src="item.item1.imgSrc" class="item-img" alt="no-item-image" />
+          <p>
+            {{ item.item1.name }}
+            <span v-if="item.item2">/&nbsp;{{ item.item2.name }}</span>
+          </p>
         </div>
       </div>
     </div>
@@ -60,7 +81,9 @@ export default defineComponent({
     // capsule logic
     const capsuleSystem: CapsuleSystem = CapsuleSystem.getInstance();
     // data
-    const seasonList: string[] = ['chilli', 'drizzle'];
+    const seasonList: Ref<string[]> = ref(capsuleSystem.getAllSeason);
+    const selectedSeason: Ref<string> = ref(capsuleSystem.getSelectedSeason);
+    const isModalState: Ref<boolean> = ref(true);
     const groupModal: Ref<boolean> = ref(false);
     const modalCssStyle: Ref<string> = ref('');
     const itemModal: Ref<boolean> = ref(false);
@@ -86,30 +109,33 @@ export default defineComponent({
     const timerSec = 500;
     const startCapsuleSystem = async (): Promise<void> => {
       // extract group
-      groupModal.value = true;
-      modalCssStyle.value = 'popup';
       group.value = await capsuleSystem.extractGroup();
       item.value = await capsuleSystem.extractItem(group.value);
 
-      setTimeout(() => {
-        modalCssStyle.value = 'popout';
-      }, timerSec);
-
-      setTimeout(() => {
-        groupModal.value = false;
-
-        itemModal.value = true;
+      if (isModalState.value) {
+        groupModal.value = true;
         modalCssStyle.value = 'popup';
+
         setTimeout(() => {
           modalCssStyle.value = 'popout';
         }, timerSec);
 
         setTimeout(() => {
-          itemModal.value = false;
-        }, timerSec + 500);
-      }, timerSec + 500);
+          groupModal.value = false;
 
-      capsuleItemList.value.push(item.value);
+          itemModal.value = true;
+          modalCssStyle.value = 'popup';
+          setTimeout(() => {
+            modalCssStyle.value = 'popout';
+          }, timerSec + 250);
+
+          setTimeout(() => {
+            itemModal.value = false;
+          }, timerSec + 750);
+        }, timerSec + 500);
+      }
+
+      capsuleItemList.value.unshift(item.value);
     };
 
     const closeModal = (): void => {
@@ -117,25 +143,35 @@ export default defineComponent({
     };
 
     const changeSeason = (payload: Event): void => {
-      const { target } = payload;
+      const target: EventTarget | null = payload.target;
 
       if (target instanceof HTMLSelectElement) {
         capsuleSystem.setSeason(target.value as Season);
       }
     };
+
+    const changeModalState = (payload: Event): void => {
+      const target: EventTarget | null = payload.target;
+      if (target instanceof HTMLInputElement) {
+        isModalState.value = target.checked;
+      }
+    };
     return {
       // modal
+      isModalState,
       groupModal,
       closeModal,
       itemModal,
       modalCssStyle,
       // capsule master
       seasonList,
+      selectedSeason,
       group,
       item,
       capsuleItemList,
       startCapsuleSystem,
       changeSeason,
+      changeModalState,
       // assets
       CapsuleSystemImg
     };

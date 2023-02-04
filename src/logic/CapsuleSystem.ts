@@ -21,7 +21,7 @@ export class CapsuleSystem {
     }
   };
   //
-  private allSeason: Season[] = ['chilli', 'drizzle'];
+  private allSeason: Season[] = ['drizzle', 'chilli'];
   // A season is selected by user.
   private selectedSeason: Season = 'chilli';
   // season item
@@ -125,7 +125,7 @@ export class CapsuleSystem {
       );
 
       if (item2 === undefined) {
-        throw new Error(`Not found capsule item2, groupItem: ${groupItem}, item2Id: ${item2Id}`);
+        throw new Error(`Not found capsule item2, groupId: ${groupItem.groupId}, item2Id: ${item2Id}`);
       }
       result.item2 = item2;
     } else if (this.lockerIds.includes(group.id)) {
@@ -165,5 +165,13 @@ export class CapsuleSystem {
    */
   private generateRandValue(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  get getSelectedSeason(): string {
+    return this.selectedSeason;
+  }
+
+  get getAllSeason(): string[] {
+    return this.allSeason;
   }
 }
