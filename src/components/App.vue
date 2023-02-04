@@ -7,6 +7,7 @@
       <img :src="OctpusImg" height="30" class="ml-8" />
     </div>
 
+    <h2 class="my-16">オプション</h2>
     <div class="flex justify-start align-center my-16 form">
       <div class="form-select mr-16">
         <label for="capsule-season">シーズン</label>
@@ -28,12 +29,20 @@
       </div>
     </div>
 
+    <div class="flex align-center">
+      <p>総額:</p>
+      <img :src="IkaCoinImg" height="20" class="mw-8" />
+      <p>{{ paidCoin.toLocaleString() }}</p>
+    </div>
+
+    <h2 class="my-16">ガチャ</h2>
     <div class="capsule-system flex justify-center align-center my-8">
       <img :src="CapsuleSystemImg" />
       <button class="mw-16" @click="startCapsuleSystem">ガチャを引く</button>
     </div>
 
-    <h3>結果</h3>
+    <h2 class="my-16">結果</h2>
+    <h3>内訳</h3>
     <div
       v-for="(capsuleItem, idx) in capsuleItemList"
       :key="`capsuleItem-${idx}`"
@@ -72,6 +81,7 @@
 
 <script lang="ts">
 import CapsuleSystemImg from '@src/assets/capsule-system.svg';
+import IkaCoinImg from '@src/assets/ika-coin.svg';
 import OctpusImg from '@src/assets/octpus.svg';
 import SquidImg from '@src/assets/squid.svg';
 import AppFooter from '@src/components/layouts/AppFooter.vue';
@@ -88,12 +98,15 @@ export default defineComponent({
   setup() {
     // capsule logic
     const capsuleSystem: CapsuleSystem = CapsuleSystem.getInstance();
-    // data
+    // view data
     const seasonList: Ref<string[]> = ref(capsuleSystem.getAllSeason);
     const selectedSeason: Ref<string> = ref(capsuleSystem.getSelectedSeason);
+    const paidCoin: Ref<number> = ref(0);
+    // modal data
     const isModalState: Ref<boolean> = ref(true);
     const groupModal: Ref<boolean> = ref(false);
     const modalCssStyle: Ref<string> = ref('');
+    // capsule data
     const itemModal: Ref<boolean> = ref(false);
     const group: Ref<CapsuleGroup> = ref({
       id: 0,
@@ -114,11 +127,14 @@ export default defineComponent({
     const capsuleItemList: Ref<CapsuleItems[]> = ref([]);
 
     // local variable
-    const timerSec = 500;
+    const timerSec: number = 500;
+    const capsuleEachPaidCoin: number = 30000;
+
     const startCapsuleSystem = async (): Promise<void> => {
       // extract group
       group.value = await capsuleSystem.extractGroup();
       item.value = await capsuleSystem.extractItem(group.value);
+      paidCoin.value += capsuleEachPaidCoin;
 
       if (isModalState.value) {
         groupModal.value = true;
@@ -171,9 +187,11 @@ export default defineComponent({
       closeModal,
       itemModal,
       modalCssStyle,
-      // capsule master
+      // view data
       seasonList,
       selectedSeason,
+      paidCoin,
+      // capsule master
       group,
       item,
       capsuleItemList,
@@ -183,7 +201,8 @@ export default defineComponent({
       // assets
       CapsuleSystemImg,
       SquidImg,
-      OctpusImg
+      OctpusImg,
+      IkaCoinImg
     };
   }
 });

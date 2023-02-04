@@ -21,11 +21,11 @@
   box-sizing: border-box;
 }
 
-$default-black: #444;
-$default-white: #eee;
+$default-black: #555;
+$default-white: #ddd;
 
 $strong-black: #222;
-$strong-white: #ddd;
+$strong-white: #ccc;
 
 body {
   background: $default-black;
@@ -46,10 +46,25 @@ body {
     top: 100vh;
     width: 100%;
   }
-}
 
-hr {
-  margin: 8px auto;
+  hr {
+    margin: 8px auto;
+  }
+
+  h2 {
+    display: flex;
+    align-items: center;
+
+    &:before {
+      background: url(arrow.svg) no-repeat;
+      background-size: contain;
+      display: inline-block;
+      content: '';
+      width: 32px;
+      height: 32px;
+      margin-right: 8px;
+    }
+  }
 }
 
 .text-center {
