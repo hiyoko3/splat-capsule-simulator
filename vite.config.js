@@ -14,6 +14,9 @@ export default () => {
   return defineConfig({
     root: path.resolve(__dirname, SRC_PATH),
     base: '/splat-capsule-simulator/',
+    server: {
+      host: true
+    },
     resolve: {
       alias: [
         {

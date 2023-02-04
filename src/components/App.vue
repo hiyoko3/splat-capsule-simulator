@@ -64,13 +64,13 @@
     </div>
 
     <div v-if="groupModal || itemModal" class="overlay">
-      <div v-if="groupModal" :class="`modal ${modalCssStyle}`">
+      <div v-if="groupModal" class="modal">
         <div class="modal-content">
           <img :src="group.imgSrc" class="capsule-img" />
         </div>
       </div>
 
-      <div v-if="itemModal" :class="`modal ${modalCssStyle}`">
+      <div v-if="itemModal" class="modal">
         <div class="modal-content">
           <img :src="item.item1.imgSrc" class="item-img" alt="no-item-image" />
           <p>
@@ -127,7 +127,6 @@ export default defineComponent({
     // modal data
     const isModalState: Ref<boolean> = ref(true);
     const groupModal: Ref<boolean> = ref(false);
-    const modalCssStyle: Ref<string> = ref('');
     // capsule data
     const itemModal: Ref<boolean> = ref(false);
     const group: Ref<CapsuleGroup> = ref({
@@ -160,20 +159,10 @@ export default defineComponent({
 
       if (isModalState.value) {
         groupModal.value = true;
-        modalCssStyle.value = 'popup';
-
-        setTimeout(() => {
-          modalCssStyle.value = 'popout';
-        }, timerSec);
 
         setTimeout(() => {
           groupModal.value = false;
-
           itemModal.value = true;
-          modalCssStyle.value = 'popup';
-          setTimeout(() => {
-            modalCssStyle.value = 'popout';
-          }, timerSec + 250);
 
           setTimeout(() => {
             itemModal.value = false;
@@ -191,10 +180,6 @@ export default defineComponent({
         const capsuleColor: CapsuleColor = capsuleSystem.getCapsuleColor(group.value);
         counter.value[capsuleColor] += 1;
       }
-    };
-
-    const closeModal = (): void => {
-      groupModal.value = false;
     };
 
     const changeSeason = (payload: Event): void => {
@@ -219,9 +204,7 @@ export default defineComponent({
       // modal
       isModalState,
       groupModal,
-      closeModal,
       itemModal,
-      modalCssStyle,
       // view data
       seasonList,
       selectedSeason,
