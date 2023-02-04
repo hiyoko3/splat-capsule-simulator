@@ -4,79 +4,79 @@
       "id": 1,
       "name": "期間限定プレート",
       "weight": 0.001,
-      "imgSrc": "/splat-capsule-simulator/assets/gold.svg"
+      "imgSrc": "/splat-capsule-simulator/gold.svg"
     },
     {
       "id": 2,
       "name": "期間限定二つ名",
       "weight": 0.003,
-      "imgSrc": "/splat-capsule-simulator/assets/silver.svg"
+      "imgSrc": "/splat-capsule-simulator/silver.svg"
     },
     {
       "id": 3,
       "name": "ギアパワーのかけら * 10",
       "weight": 0.006,
-      "imgSrc": "/splat-capsule-simulator/assets/bronze.svg"
+      "imgSrc": "/splat-capsule-simulator/bronze.svg"
     },
     {
       "id": 4,
       "name": "味方全員2倍フードチケット",
       "weight": 0.03,
-      "imgSrc": "/splat-capsule-simulator/assets/red.svg"
+      "imgSrc": "/splat-capsule-simulator/red.svg"
     },
     {
       "id": 5,
       "name": "カードパック",
       "weight": 0.04,
-      "imgSrc": "/splat-capsule-simulator/assets/red.svg"
+      "imgSrc": "/splat-capsule-simulator/red.svg"
     },
     {
       "id": 6,
       "name": "プレート",
       "weight": 0.06,
-      "imgSrc": "/splat-capsule-simulator/assets/red.svg"
+      "imgSrc": "/splat-capsule-simulator/red.svg"
     },
     {
       "id": 7,
       "name": "2倍フードチケット",
       "weight": 0.07,
-      "imgSrc": "/splat-capsule-simulator/assets/violet.svg"
+      "imgSrc": "/splat-capsule-simulator/violet.svg"
     },
     {
       "id": 8,
       "name": "ギアパワーのかけら",
       "weight": 0.1,
-      "imgSrc": "/splat-capsule-simulator/assets/violet.svg"
+      "imgSrc": "/splat-capsule-simulator/violet.svg"
     },
     {
       "id": 9,
       "name": "ロッカーステッカー",
       "weight": 0.1,
-      "imgSrc": "/splat-capsule-simulator/assets/blue.svg"
+      "imgSrc": "/splat-capsule-simulator/blue.svg"
     },
     {
       "id": 10,
       "name": "ロッカーフィギュア",
       "weight": 0.1,
-      "imgSrc": "/splat-capsule-simulator/assets/blue.svg"
+      "imgSrc": "/splat-capsule-simulator/blue.svg"
     },
     {
       "id": 11,
       "name": "1.5倍フードチケット",
       "weight": 0.13,
-      "imgSrc": "/splat-capsule-simulator/assets/blue.svg"
+      "imgSrc": "/splat-capsule-simulator/blue.svg"
     },
     {
       "id": 12,
       "name": "ドリンクチケット",
       "weight": 0.14,
-      "imgSrc": "/splat-capsule-simulator/assets/blue.svg"
+      "imgSrc": "/splat-capsule-simulator/blue.svg"
     },
     {
       "id": 13,
       "name": "二つ名",
       "weight": 0.22,
-      "imgSrc": "/splat-capsule-simulator/assets/violet.svg"
+      "imgSrc": "/splat-capsule-simulator/violet.svg"
     }
   ],
   "chilli": [
@@ -84,79 +84,79 @@
       "id": 1,
       "name": "期間限定プレート",
       "weight": 0.001,
-      "imgSrc": "/splat-capsule-simulator/assets/gold.svg"
+      "imgSrc": "/splat-capsule-simulator/gold.svg"
     },
     {
       "id": 2,
       "name": "期間限定二つ名",
       "weight": 0.003,
-      "imgSrc": "/splat-capsule-simulator/assets/silver.svg"
+      "imgSrc": "/splat-capsule-simulator/silver.svg"
     },
     {
       "id": 3,
       "name": "ギアパワーのかけら * 10",
       "weight": 0.006,
-      "imgSrc": "/splat-capsule-simulator/assets/bronze.svg"
+      "imgSrc": "/splat-capsule-simulator/bronze.svg"
     },
     {
       "id": 4,
       "name": "味方全員2倍フードチケット",
       "weight": 0.03,
-      "imgSrc": "/splat-capsule-simulator/assets/red.svg"
+      "imgSrc": "/splat-capsule-simulator/red.svg"
     },
     {
       "id": 5,
       "name": "カードパック",
       "weight": 0.04,
-      "imgSrc": "/splat-capsule-simulator/assets/red.svg"
+      "imgSrc": "/splat-capsule-simulator/red.svg"
     },
     {
       "id": 6,
       "name": "プレート",
       "weight": 0.06,
-      "imgSrc": "/splat-capsule-simulator/assets/red.svg"
+      "imgSrc": "/splat-capsule-simulator/red.svg"
     },
     {
       "id": 7,
       "name": "2倍フードチケット",
       "weight": 0.07,
-      "imgSrc": "/splat-capsule-simulator/assets/violet.svg"
+      "imgSrc": "/splat-capsule-simulator/violet.svg"
     },
     {
       "id": 8,
       "name": "ギアパワーのかけら",
       "weight": 0.1,
-      "imgSrc": "/splat-capsule-simulator/assets/violet.svg"
+      "imgSrc": "/splat-capsule-simulator/violet.svg"
     },
     {
       "id": 9,
       "name": "ロッカーステッカー",
       "weight": 0.1,
-      "imgSrc": "/splat-capsule-simulator/assets/blue.svg"
+      "imgSrc": "/splat-capsule-simulator/blue.svg"
     },
     {
       "id": 10,
       "name": "ロッカーフィギュア",
       "weight": 0.1,
-      "imgSrc": "/splat-capsule-simulator/assets/blue.svg"
+      "imgSrc": "/splat-capsule-simulator/blue.svg"
     },
     {
       "id": 11,
       "name": "1.5倍フードチケット",
       "weight": 0.13,
-      "imgSrc": "/splat-capsule-simulator/assets/blue.svg"
+      "imgSrc": "/splat-capsule-simulator/blue.svg"
     },
     {
       "id": 12,
       "name": "ドリンクチケット",
       "weight": 0.14,
-      "imgSrc": "/splat-capsule-simulator/assets/blue.svg"
+      "imgSrc": "/splat-capsule-simulator/blue.svg"
     },
     {
       "id": 13,
       "name": "二つ名",
       "weight": 0.22,
-      "imgSrc": "/splat-capsule-simulator/assets/violet.svg"
+      "imgSrc": "/splat-capsule-simulator/violet.svg"
     }
   ]
 }

@@ -33,7 +33,7 @@ export default () => {
       // svg loader
       svgLoader({ defaultImport: 'url' })
     ],
-    // publicDir: path.resolve(__dirname, `${SRC_PATH}/assets`),
+    publicDir: path.resolve(__dirname, `${SRC_PATH}/assets/static`),
     build: {
       outDir: path.resolve(__dirname, OUTPUT_PATH),
       emptyOutDir: true
