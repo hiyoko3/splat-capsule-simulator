@@ -52,7 +52,12 @@ body {
     margin: 8px auto;
   }
 
+  h1 {
+    font-size: 26px;
+  }
+
   h2 {
+    font-size: 22px;
     display: flex;
     align-items: center;
 
@@ -218,6 +223,12 @@ body {
     label {
       margin-left: 16px;
     }
+  }
+}
+
+.capsule-classification {
+  p {
+    font-size: 14px;
   }
 }
 

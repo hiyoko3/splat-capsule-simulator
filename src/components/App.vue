@@ -3,7 +3,7 @@
     <app-header></app-header>
     <div class="panel flex align-center">
       <img :src="SquidImg" height="30" class="mr-8" />
-      スプラトゥーン3 のガチャシミュレーターです
+      スプラトゥーン3 のガチャシミュレーターです。金カプセルが出ない人はストレス発散に使ってください。
       <img :src="OctpusImg" height="30" class="ml-8" />
     </div>
 
@@ -42,8 +42,12 @@
     </div>
 
     <h2 class="my-16">結果</h2>
-    <h3>内訳</h3>
-    <p>{{ capsuleClassification }}</p>
+
+    <div class="capsule-classification">
+      <h4>内訳</h4>
+      <p class="">{{ capsuleClassification }}</p>
+    </div>
+
     <div
       v-for="(capsuleItem, idx) in capsuleItemList"
       :key="`capsuleItem-${idx}`"

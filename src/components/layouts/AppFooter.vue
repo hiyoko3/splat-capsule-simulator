@@ -1,11 +1,11 @@
 <template>
   <footer>
     <hr />
-    <div class="">
+    <div>
       <p>このサイトは非公式(unofficial)サービスです。任天堂株式会社とは一切関係ありません</p>
       <p>
         参考資料は
-        <a href="https://github.com/hiyoko3/splat-capsule-simulator/blob/main/README.md" target="_blank">こちら</a>
+        <a href="https://github.com/hiyoko3/splat-capsule-simulator/blob/develop/README.md" target="_blank">こちら</a>
       </p>
       <p>
         <a href="https://github.com/hiyoko3/splat-capsule-simulator" target="_blank">このサイトのソースコード</a>
