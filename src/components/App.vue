@@ -29,12 +29,6 @@
       </div>
     </div>
 
-    <div class="flex align-center">
-      <p>総額:</p>
-      <img :src="IkaCoinImg" height="20" class="mw-8" />
-      <p>{{ paidCoin.toLocaleString() }}</p>
-    </div>
-
     <h2 class="my-16">ガチャ</h2>
     <div class="capsule-system flex justify-center align-center my-8">
       <img :src="CapsuleSystemImg" />
@@ -43,9 +37,17 @@
 
     <h2 class="my-16">結果</h2>
 
-    <div class="capsule-classification">
+    <div class="my-8">
+      <h4>総額</h4>
+      <div class="my-8 flex align-center">
+        <img :src="IkaCoinImg" height="20" class="mw-8" />
+        <span>{{ paidCoin.toLocaleString() }}</span>
+      </div>
+    </div>
+
+    <div class="my-8 capsule-classification">
       <h4>内訳</h4>
-      <p class="">{{ capsuleClassification }}</p>
+      <p class="my-8">{{ capsuleClassification }}</p>
     </div>
 
     <div
