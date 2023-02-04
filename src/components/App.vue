@@ -43,6 +43,7 @@
 
     <h2 class="my-16">結果</h2>
     <h3>内訳</h3>
+    <p>{{ capsuleClassification }}</p>
     <div
       v-for="(capsuleItem, idx) in capsuleItemList"
       :key="`capsuleItem-${idx}`"
@@ -87,8 +88,8 @@ import SquidImg from '@src/assets/squid.svg';
 import AppFooter from '@src/components/layouts/AppFooter.vue';
 import AppHeader from '@src/components/layouts/AppHeader.vue';
 import { CapsuleSystem } from '@src/logic/CapsuleSystem';
-import { CapsuleGroup, CapsuleItems, Season } from '@src/models/CapsuleModel';
-import { Ref, defineComponent, ref } from 'vue';
+import { CapsuleColor, CapsuleGroup, CapsuleItems, Season } from '@src/models/CapsuleModel';
+import { Ref, computed, defineComponent, ref } from 'vue';
 
 export default defineComponent({
   components: {
@@ -102,6 +103,23 @@ export default defineComponent({
     const seasonList: Ref<string[]> = ref(capsuleSystem.getAllSeason);
     const selectedSeason: Ref<string> = ref(capsuleSystem.getSelectedSeason);
     const paidCoin: Ref<number> = ref(0);
+    const counter: Ref<{
+      total: number;
+      gold: number;
+      silver: number;
+      bronze: number;
+      red: number;
+      violet: number;
+      blue: number;
+    }> = ref({
+      total: 0,
+      gold: 0,
+      silver: 0,
+      bronze: 0,
+      red: 0,
+      violet: 0,
+      blue: 0
+    });
     // modal data
     const isModalState: Ref<boolean> = ref(true);
     const groupModal: Ref<boolean> = ref(false);
@@ -155,11 +173,20 @@ export default defineComponent({
 
           setTimeout(() => {
             itemModal.value = false;
+            capsuleItemList.value.unshift(item.value);
+            // increment count
+            counter.value.total += 1;
+            const capsuleColor: CapsuleColor = capsuleSystem.getCapsuleColor(group.value);
+            counter.value[capsuleColor] += 1;
           }, timerSec + 750);
         }, timerSec + 500);
+      } else {
+        capsuleItemList.value.unshift(item.value);
+        // increment count
+        counter.value.total += 1;
+        const capsuleColor: CapsuleColor = capsuleSystem.getCapsuleColor(group.value);
+        counter.value[capsuleColor] += 1;
       }
-
-      capsuleItemList.value.unshift(item.value);
     };
 
     const closeModal = (): void => {
@@ -180,6 +207,10 @@ export default defineComponent({
         isModalState.value = target.checked;
       }
     };
+
+    const capsuleClassification = computed((): string => {
+      return `総試行数: ${counter.value.total}, 金: ${counter.value.gold}, 銀: ${counter.value.silver}, 銅: ${counter.value.bronze}, 赤: ${counter.value.red}, 紫: ${counter.value.violet}, 青: ${counter.value.blue}`;
+    });
     return {
       // modal
       isModalState,
@@ -191,6 +222,7 @@ export default defineComponent({
       seasonList,
       selectedSeason,
       paidCoin,
+      capsuleClassification,
       // capsule master
       group,
       item,

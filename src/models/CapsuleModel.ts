@@ -1,3 +1,5 @@
+export type CapsuleColor = 'gold' | 'silver' | 'bronze' | 'red' | 'violet' | 'blue';
+
 export type CapsuleGroup = {
   id: number;
   name: string;

@@ -1,8 +1,15 @@
 import SeasonCapsuleGroup from '@src/assets/CapsuleGroup.json';
 import SeasonCapsuleGroupItem from '@src/assets/CapsuleGroupItem.json';
 import SeasonCapsuleItem from '@src/assets/CapsuleItem.json';
-import { CapsuleGroup, CapsuleItem, CapsuleItems, Season, SeasonCapsule } from '@src/models/CapsuleModel';
-import { CapsuleGroupItem } from './../models/CapsuleModel';
+import {
+  CapsuleColor,
+  CapsuleGroup,
+  CapsuleGroupItem,
+  CapsuleItem,
+  CapsuleItems,
+  Season,
+  SeasonCapsule
+} from '@src/models/CapsuleModel';
 
 export class CapsuleSystem {
   // singleton pattern
@@ -155,6 +162,24 @@ export class CapsuleSystem {
     this.capsuleGroupItems = this.seasonCapsule[season].groupItems;
     this.capsuleItems = this.seasonCapsule[season].items;
     this.selectedSeason = season;
+  }
+
+  getCapsuleColor(group: CapsuleGroup): CapsuleColor {
+    if ([1].includes(group.id)) {
+      return 'gold';
+    } else if ([2].includes(group.id)) {
+      return 'silver';
+    } else if ([3].includes(group.id)) {
+      return 'bronze';
+    } else if ([4, 5, 6].includes(group.id)) {
+      return 'red';
+    } else if ([7, 8, 13].includes(group.id)) {
+      return 'violet';
+    } else if ([9, 10, 11, 12].includes(group.id)) {
+      return 'blue';
+    } else {
+      throw new Error(`No color: groupId: ${group.id}`);
+    }
   }
 
   /**

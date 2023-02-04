@@ -14,3 +14,4 @@ The capsule simulator for Splatoon 3 :)
   - ※ イカモドキは既に公開が終了しているの使用には注意してください
 - [GameWith - スプラトゥーン 3 攻略 wiki (ガチャのデータ)](https://gamewith.jp/splatoon3/)
 - [AppMedia - スプラトゥーン 3 攻略 Wiki ｜スプラ 3 (ガチャのデータ)](https://appmedia.jp/splatoon3/)
+- [Splatoon3 - スプラトゥーン 3 攻略＆検証 Wiki\* (ガチャのカプセル区分)](https://wikiwiki.jp/splatoon3mix/%E3%81%8F%E3%81%98%E5%BC%95%E3%81%8D)
