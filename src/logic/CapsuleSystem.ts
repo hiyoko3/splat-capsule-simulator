@@ -37,8 +37,8 @@ export class CapsuleSystem {
   private capsuleItems: CapsuleItem[];
   // 二つ名 groupId
   private plateLabelGroupId: number = 13;
-  // ロッカーアイテム groupId
-  private lockerIds: number[] = [9, 10];
+  // second choice ids
+  private haveSecondItemIds: number[] = [9, 10, 13];
 
   /**
    * create instance
@@ -87,6 +87,20 @@ export class CapsuleSystem {
 
       // 値が加算値以下ならアイテムを返却
       if (userWeightVal < accumulatedVal) {
+        const groupItem: CapsuleGroupItem | undefined = this.capsuleGroupItems.find(
+          (groupItem: CapsuleGroupItem) => groupItem.groupId === capsuleGroup.id
+        );
+
+        if (groupItem === undefined) {
+          throw new Error(`Not found capsule group item, groupId: ${capsuleGroup.id}`);
+        }
+
+        // グループ内のアイテムが存在しなければ再抽選
+        // - 対象は現時点で二つ名のみ
+        if (groupItem.itemIds_1.length < 1) {
+          continue;
+        }
+
         return capsuleGroup;
       }
     }
@@ -103,7 +117,7 @@ export class CapsuleSystem {
     );
 
     if (groupItem === undefined) {
-      throw new Error(`Not found capsule group item, group: ${group}`);
+      throw new Error(`Not found capsule group item, groupId: ${group.id}`);
     }
 
     const randVal: number = this.generateRandValue(0, groupItem.itemIds_1.length - 1);
@@ -123,8 +137,8 @@ export class CapsuleSystem {
       item2: null
     };
 
-    if (group.id === this.plateLabelGroupId) {
-      const randVal: number = this.generateRandValue(0, groupItem.itemIds_2.length);
+    if (this.haveSecondItemIds.includes(group.id)) {
+      const randVal: number = this.generateRandValue(0, groupItem.itemIds_2.length - 1);
       const item2Id: number = groupItem.itemIds_2[randVal];
 
       const item2: CapsuleItem | undefined = this.capsuleItems.find(
@@ -135,20 +149,15 @@ export class CapsuleSystem {
         throw new Error(`Not found capsule item2, groupId: ${groupItem.groupId}, item2Id: ${item2Id}`);
       }
       result.item2 = item2;
-    } else if (this.lockerIds.includes(group.id)) {
-      // remove item1Id
-      const index: number = groupItem.itemIds_2.indexOf(item1Id);
-      groupItem.itemIds_2.splice(index, 1);
-      const item2Id: number = groupItem.itemIds_2[randVal];
 
-      const item2: CapsuleItem | undefined = this.capsuleItems.find(
-        (capsuleItem: CapsuleItem) => capsuleItem.id === item2Id
-      );
-
-      if (item2 === undefined) {
-        throw new Error(`Not found capsule item2, groupItem: ${groupItem}, item2Id: ${item2Id}`);
+      // 二つ名は重複して出力されないのでアイテムを削除する
+      if (group.id === this.plateLabelGroupId) {
+        // remove itemId1, itemId2
+        const item1Idx: number = groupItem.itemIds_1.indexOf(item1Id);
+        groupItem.itemIds_1.splice(item1Idx, 1);
+        const item2Idx: number = groupItem.itemIds_2.indexOf(item2Id);
+        groupItem.itemIds_2.splice(item2Idx, 1);
       }
-      result.item2 = item2;
     }
     return result;
   }
