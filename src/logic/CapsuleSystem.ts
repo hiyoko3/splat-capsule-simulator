@@ -38,7 +38,7 @@ export class CapsuleSystem {
   // 二つ名 groupId
   private plateLabelGroupId: number = 13;
   // second choice ids
-  private haveSecondItemIds: number[] = [9, 10, 13];
+  private haveSecondItemIds: number[] = [2, 9, 10, 13];
   // gold mode
   private isGoldMode: boolean = false;
 

@@ -9,14 +9,14 @@
     {
       "id": 2,
       "name": "大大吉の",
-      "cssStyle": "plate-label",
-      "imgSrc": "/splat-capsule-simulator/plate-label.svg"
+      "cssStyle": "silver-plate-label",
+      "imgSrc": "/splat-capsule-simulator/silver-plate-label.svg"
     },
     {
       "id": 3,
       "name": "ラッキーマン",
-      "cssStyle": "plate-label",
-      "imgSrc": "/splat-capsule-simulator/plate-label.svg"
+      "cssStyle": "silver-plate-label",
+      "imgSrc": "/splat-capsule-simulator/silver-plate-label.svg"
     },
     {
       "id": 4,
@@ -9156,14 +9156,14 @@
     {
       "id": 2,
       "name": "激レアの",
-      "cssStyle": "plate-label",
-      "imgSrc": "/splat-capsule-simulator/plate-label.svg"
+      "cssStyle": "silver-plate-label",
+      "imgSrc": "/splat-capsule-simulator/silver-plate-label.svg"
     },
     {
       "id": 3,
       "name": "天然記念物",
-      "cssStyle": "plate-label",
-      "imgSrc": "/splat-capsule-simulator/plate-label.svg"
+      "cssStyle": "silver-plate-label",
+      "imgSrc": "/splat-capsule-simulator/silver-plate-label.svg"
     },
     {
       "id": 4,

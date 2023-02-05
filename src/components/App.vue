@@ -36,7 +36,10 @@
     <h2 class="my-16">ガチャ</h2>
     <div class="capsule-system flex justify-center align-center my-8">
       <img :src="CapsuleSystemImg" />
-      <button class="mw-16" @click="startCapsuleSystem">ガチャを引く</button>
+      <div class="mw-16">
+        <button class="my-8" @click="startCapsuleSystem(1)">ガチャを引く</button>
+        <button class="my-8" @click="startCapsuleSystem(10)">ガチャを引く(10連)</button>
+      </div>
     </div>
 
     <h2 class="my-16">結果</h2>
@@ -71,18 +74,22 @@
 
     <div v-if="groupModal || itemModal" class="overlay">
       <div v-if="groupModal" class="modal">
-        <div class="modal-content">
-          <img :src="group.imgSrc" class="capsule-img" />
+        <div class="modal-content flex justify-center wrap">
+          <div v-for="(groupImg, idx) in groupList" :key="`group-img-${idx}`" class="modal-flex">
+            <img :src="groupImg.imgSrc" class="capsule-img" />
+          </div>
         </div>
       </div>
 
       <div v-if="itemModal" class="modal">
-        <div class="modal-content">
-          <img :src="item.item1.imgSrc" class="item-img" alt="no-item-image" />
-          <p>
-            {{ item.item1.name }}
-            <span v-if="item.item2">/&nbsp;{{ item.item2.name }}</span>
-          </p>
+        <div class="modal-content flex justify-center wrap">
+          <div v-for="(item, idx) in itemList" :key="`item-${idx}`" class="modal-flex">
+            <img :src="item.item1.imgSrc" class="item-img" alt="no-item-image" />
+            <p>
+              {{ item.item1.name }}
+              <span v-if="item.item2">/&nbsp;{{ item.item2.name }}</span>
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -139,35 +146,25 @@ export default defineComponent({
     // modal data
     const isModalState: Ref<boolean> = ref(true);
     const groupModal: Ref<boolean> = ref(false);
-    // capsule data
     const itemModal: Ref<boolean> = ref(false);
-    const group: Ref<CapsuleGroup> = ref({
-      id: 0,
-      name: '',
-      weight: 0,
-      imgSrc: ''
-    });
-    const item: Ref<CapsuleItems> = ref({
-      group: group.value,
-      item1: {
-        id: 0,
-        name: '',
-        cssStyle: '',
-        imgSrc: ''
-      },
-      item2: null
-    });
+    // capsule data
+    const groupList: Ref<CapsuleGroup[]> = ref([]);
+    const itemList: Ref<CapsuleItems[]> = ref([]);
     const capsuleItemList: Ref<CapsuleItems[]> = ref([]);
 
     // local variable
     const timerSec: number = 500;
     const capsuleEachPaidCoin: number = 30000;
 
-    const startCapsuleSystem = async (): Promise<void> => {
+    const startCapsuleSystem = async (times: number): Promise<void> => {
+      console.log('times', times);
       // extract group
-      group.value = await capsuleSystem.extractGroup();
-      item.value = await capsuleSystem.extractItem(group.value);
-      paidCoin.value += capsuleEachPaidCoin;
+      for (let i = 0; i < times; i++) {
+        const capsuleGroup: CapsuleGroup = await capsuleSystem.extractGroup();
+        groupList.value.push(capsuleGroup);
+        itemList.value.push(await capsuleSystem.extractItem(capsuleGroup));
+        paidCoin.value += capsuleEachPaidCoin;
+      }
 
       if (isModalState.value) {
         groupModal.value = true;
@@ -178,19 +175,30 @@ export default defineComponent({
 
           setTimeout(() => {
             itemModal.value = false;
-            capsuleItemList.value.unshift(item.value);
-            // increment count
-            counter.value.total += 1;
-            const capsuleColor: CapsuleColor = capsuleSystem.getCapsuleColor(group.value);
-            counter.value[capsuleColor] += 1;
+
+            for (let i = 0; i < times; i++) {
+              capsuleItemList.value.unshift(itemList.value[i]);
+              // increment count
+              counter.value.total += 1;
+              const capsuleColor: CapsuleColor = capsuleSystem.getCapsuleColor(groupList.value[i]);
+              counter.value[capsuleColor] += 1;
+            }
+
+            groupList.value = [];
+            itemList.value = [];
           }, timerSec + 750);
         }, timerSec + 500);
       } else {
-        capsuleItemList.value.unshift(item.value);
-        // increment count
-        counter.value.total += 1;
-        const capsuleColor: CapsuleColor = capsuleSystem.getCapsuleColor(group.value);
-        counter.value[capsuleColor] += 1;
+        for (let i = 0; i < times; i++) {
+          capsuleItemList.value.unshift(itemList.value[i]);
+          // increment count
+          counter.value.total += 1;
+          const capsuleColor: CapsuleColor = capsuleSystem.getCapsuleColor(groupList.value[i]);
+          counter.value[capsuleColor] += 1;
+        }
+
+        groupList.value = [];
+        itemList.value = [];
       }
     };
 
@@ -267,8 +275,8 @@ export default defineComponent({
       paidCoin,
       capsuleClassification,
       // capsule master
-      group,
-      item,
+      groupList,
+      itemList,
       capsuleItemList,
       startCapsuleSystem,
       changeSeason,
