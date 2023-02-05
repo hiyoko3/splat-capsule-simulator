@@ -350,6 +350,12 @@ body {
 
 /* smart phone */
 @media (max-width: 550px) {
+  body {
+    #app {
+      padding: 16px;
+    }
+  }
+
   .modal {
     width: 98%;
     margin: auto 1%;
