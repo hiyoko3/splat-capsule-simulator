@@ -39,6 +39,8 @@ export class CapsuleSystem {
   private plateLabelGroupId: number = 13;
   // second choice ids
   private haveSecondItemIds: number[] = [9, 10, 13];
+  // gold mode
+  private isGoldMode: boolean = false;
 
   /**
    * create instance
@@ -79,14 +81,19 @@ export class CapsuleSystem {
     // 加算されていく値
     let accumulatedVal: number = 0.0;
     // ガチャを押下した瞬間の値
-    const userWeightVal: number = this.generateRandValue(1, 1000) / 1000;
+    let userWeightVal: number = this.generateRandValue(1, 1000) / 1000;
+
+    // 金プレートしか出現しないモード
+    if (this.isGoldMode) {
+      userWeightVal = 0.001;
+    }
 
     // extract a capsule group
     for (const capsuleGroup of this.capsuleGroups) {
       accumulatedVal += capsuleGroup.weight;
 
       // 値が加算値以下ならアイテムを返却
-      if (userWeightVal < accumulatedVal) {
+      if (userWeightVal <= accumulatedVal) {
         const groupItem: CapsuleGroupItem | undefined = this.capsuleGroupItems.find(
           (groupItem: CapsuleGroupItem) => groupItem.groupId === capsuleGroup.id
         );
@@ -197,8 +204,12 @@ export class CapsuleSystem {
    * @param max max number
    * @returns rand value
    */
-  private generateRandValue(min: number, max: number): number {
+  public generateRandValue(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  public setGoldMode(mode: boolean) {
+    this.isGoldMode = mode;
   }
 
   get getSelectedSeason(): string {

@@ -1,6 +1,10 @@
 <template>
+  <app-header></app-header>
   <main>
-    <app-header></app-header>
+    <h3 v-if="isGoldMode" class="flex align-center">
+      ※※※ ゴールドモード突入！！！！このモードプレートしか出ません ※※※
+      <button @click="offGoldMode">解除</button>
+    </h3>
     <div class="panel flex align-center">
       <img :src="SquidImg" height="30" class="mr-8" />
       スプラトゥーン3 のガチャシミュレーターです。金カプセルが出ない人はストレス発散に使ってください。
@@ -82,12 +86,17 @@
         </div>
       </div>
     </div>
+
+    <div class="random-gold-salmon" @click="onGoldMode">
+      <img :src="GoldSalmonImg" />
+    </div>
   </main>
   <app-footer></app-footer>
 </template>
 
 <script lang="ts">
 import CapsuleSystemImg from '@src/assets/capsule-system.svg';
+import GoldSalmonImg from '@src/assets/gold-salmon.svg';
 import IkaCoinImg from '@src/assets/ika-coin.svg';
 import OctpusImg from '@src/assets/octpus.svg';
 import SquidImg from '@src/assets/squid.svg';
@@ -95,7 +104,7 @@ import AppFooter from '@src/components/layouts/AppFooter.vue';
 import AppHeader from '@src/components/layouts/AppHeader.vue';
 import { CapsuleSystem } from '@src/logic/CapsuleSystem';
 import { CapsuleColor, CapsuleGroup, CapsuleItems, Season } from '@src/models/CapsuleModel';
-import { Ref, computed, defineComponent, ref } from 'vue';
+import { Ref, computed, defineComponent, onMounted, ref } from 'vue';
 
 export default defineComponent({
   components: {
@@ -126,6 +135,7 @@ export default defineComponent({
       violet: 0,
       blue: 0
     });
+    const isGoldMode: Ref<boolean> = ref(false);
     // modal data
     const isModalState: Ref<boolean> = ref(true);
     const groupModal: Ref<boolean> = ref(false);
@@ -202,6 +212,50 @@ export default defineComponent({
     const capsuleClassification = computed((): string => {
       return `総試行数: ${counter.value.total}, 金: ${counter.value.gold}, 銀: ${counter.value.silver}, 銅: ${counter.value.bronze}, 赤: ${counter.value.red}, 紫: ${counter.value.violet}, 青: ${counter.value.blue}`;
     });
+
+    const onGoldMode = (): void => {
+      isGoldMode.value = true;
+      capsuleSystem.setGoldMode(true);
+      document.body.classList.add('gold-mode');
+    };
+
+    const offGoldMode = (): void => {
+      isGoldMode.value = false;
+      capsuleSystem.setGoldMode(false);
+      document.body.classList.remove('gold-mode');
+    };
+
+    // random print gold salmon
+    onMounted(() => {
+      const mainElm: HTMLElement = document.querySelector('main') as HTMLElement;
+      const goldSalmon: HTMLElement = mainElm.querySelector('.random-gold-salmon') as HTMLElement;
+      const salmonWidth = goldSalmon.clientWidth;
+      const salmonHeight = goldSalmon.clientHeight;
+
+      let salmonVisible = false;
+      setInterval((): void => {
+        if (isGoldMode.value) {
+          if (salmonVisible) {
+            goldSalmon.style.opacity = '0.0';
+            salmonVisible = false;
+          }
+          return;
+        }
+        // move salmon
+        const height = mainElm.clientHeight;
+        const width = mainElm.clientWidth;
+
+        const newPosX = capsuleSystem.generateRandValue(0, width - salmonWidth);
+        const newPosY = capsuleSystem.generateRandValue(0, height - salmonHeight);
+
+        goldSalmon.style.top = `${newPosY}px`;
+        goldSalmon.style.left = `${newPosX}px`;
+        // visible salmon
+        goldSalmon.style.opacity = salmonVisible ? '0.0' : '1.0';
+        salmonVisible = !salmonVisible;
+      }, 1500);
+    });
+
     return {
       // modal
       isModalState,
@@ -219,11 +273,16 @@ export default defineComponent({
       startCapsuleSystem,
       changeSeason,
       changeModalState,
+      // gold salmon mode
+      isGoldMode,
+      onGoldMode,
+      offGoldMode,
       // assets
       CapsuleSystemImg,
       SquidImg,
       OctpusImg,
-      IkaCoinImg
+      IkaCoinImg,
+      GoldSalmonImg
     };
   }
 });

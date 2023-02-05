@@ -29,46 +29,46 @@ $strong-black: #222;
 $strong-white: #ccc;
 
 body {
+  height: 100vh;
   background: $default-black;
   color: $default-white;
-  height: 100vh;
-}
 
-#app {
-  min-height: 100%;
-  padding: 24px;
+  #app {
+    min-height: 100%;
+    padding: 24px;
 
-  header {
-    width: 100%;
-  }
+    header {
+      width: 100%;
+    }
 
-  footer {
-    position: sticky;
-    top: 100vh;
-    width: 100%;
-  }
+    footer {
+      position: sticky;
+      top: 100vh;
+      width: 100%;
+    }
 
-  hr {
-    margin: 8px auto;
-  }
+    hr {
+      margin: 8px auto;
+    }
 
-  h1 {
-    font-size: 26px;
-  }
+    h1 {
+      font-size: 26px;
+    }
 
-  h2 {
-    font-size: 22px;
-    display: flex;
-    align-items: center;
+    h2 {
+      font-size: 22px;
+      display: flex;
+      align-items: center;
 
-    &:before {
-      background: url(arrow.svg) no-repeat;
-      background-size: contain;
-      display: inline-block;
-      content: '';
-      width: 32px;
-      height: 32px;
-      margin-right: 8px;
+      &:before {
+        background: url(arrow.svg) no-repeat;
+        background-size: contain;
+        display: inline-block;
+        content: '';
+        width: 32px;
+        height: 32px;
+        margin-right: 8px;
+      }
     }
   }
 }
@@ -206,7 +206,9 @@ body {
       background: $strong-black;
       color: $strong-white;
       padding: 8px;
-      width: 120px;
+      width: 150px;
+      height: 35px;
+      font-size: 18px;
     }
     label {
       padding-right: 16px;
@@ -279,11 +281,30 @@ body {
   }
 
   .capsule-img {
-    max-width: 150px;
+    max-width: 100px;
   }
 
   .item-img {
     max-width: 80px;
+  }
+}
+
+.gold-mode {
+  background: #ffd700;
+  color: #fff;
+}
+
+.random-gold-salmon {
+  position: absolute;
+  top: 0;
+  z-index: 9999;
+  opacity: 0;
+  &:hover {
+    cursor: pointer;
+  }
+
+  img {
+    height: 30px;
   }
 }
 
